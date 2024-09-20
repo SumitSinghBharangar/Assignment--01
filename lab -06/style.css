@@ -1,0 +1,96 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    height: 100vh;
+}
+.container{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 50vh;
+    width: 50%;
+}
+.face{
+    position: relative;
+    background: transparent;
+    z-index: 1;
+    &::before,&::after{
+        position: absolute;
+        top: -30px;
+        display: block;
+        border-radius: 50%;
+        content: '';
+        height: 0px;
+        width: 0px;
+    }
+    &::before{
+        animation: face-top 0.5s ease infinite;
+        border: 30px solid #ffdd00;
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+    }
+    &::after{
+        animation: face-down 0.5s ease infinite;
+        border: 30px solid #ffdd00;
+        border-right-color: transparent;
+        border-top-color: transparent;
+    }
+}
+@keyframes face-top {
+    0%,100%{
+        transform: rotate(-45deg);
+    }
+    50%{
+        transform: rotate(-80deg);
+    }
+
+}
+@keyframes face-down {
+    0%,100%{
+        transform: rotate(-40deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+}
+.move{
+    display: flex;
+    justify-content: space-around;
+    animation: eating 0.5s linear infinite;
+    width: 100%;
+    &::before{
+        background: white;
+        border-radius: 50%;
+        content: '';
+        width: 1rem;
+        height: 1rem;
+    }
+}
+@keyframes eating {
+    0%{
+        transform: translateX(50%);
+    }
+    100%{
+        transform: translateX(-50%);
+    }
+}
+.eye{
+    background: black;
+    width: 50px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 35px;
+    margin-bottom: 35px;
+    z-index: 1;
+    animation: eyeani 0.5s  infinite;
+}
+@keyframes eyeani {
+    0%{
+        transform: scale(100%);
+    }
+    50%{
+        transform: scale(0%);
+    }
+}
